@@ -1,0 +1,288 @@
+Home page(HTML Code)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Book Store</title>
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+<!-- HEADER -->
+<header>
+    <h1>Online Book Store</h1>
+</header>
+<div class="container">
+    <!-- LEFT FRAME (Menu) -->
+    <aside class="sidebar">
+        <h3>Menu</h3>
+        <a href="home.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registration</a>
+    </aside>
+
+    <!-- RIGHT FRAME (Content) -->
+    <main class="content">
+        <h2>Welcome to Our Book Store</h2>
+        <p>
+            Discover a wide collection of novels, fictional stories,
+            and academic books at affordable prices.
+        </p>
+        <p>
+            Browse our catalogue, register, and explore amazing reads!
+        </p>
+    </main>
+</div>
+<footer>
+    © 2026 Online Book Store
+</footer>
+</body>
+</html>
+
+Login.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+<header>
+    <h1>Online Book Store</h1>
+</header>
+<div class="container">
+    <aside class="sidebar">
+        <h3>Menu</h3>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registration</a>
+        <a href="catalogue.html">Catalogue</a>
+    </aside>
+    <main class="content">
+        <h2>Login Page</h2>
+        <form>
+            <label>Username:</label><br>
+            <input type="text"><br><br>
+
+            <label>Password:</label><br>
+            <input type="password"><br><br>
+
+            <input type="submit" value="Login">
+            <input type="reset" value="Clear">
+        </form>
+    </main>
+</div>
+<footer>
+    © 2026 Online Book Store
+</footer>
+</body>
+</html>
+
+Catalogue.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Catalogue</title>
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+<header>
+    <h1>Online Book Store</h1>
+</header>
+<div class="container">
+
+    <aside class="sidebar">
+        <h3>Menu</h3>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registration</a>
+        <a href="catalogue.html">Catalogue</a>
+    </aside>
+
+    <main class="content">
+        <h2>Book Catalogue</h2>
+
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+
+            <tr>
+                <td><img src="https://picsum.photos/100/150?1"></td>
+                <td>The Great Gatsby</td>
+                <td>F. Scott Fitzgerald</td>
+                <td>₹399</td>
+            </tr>
+
+            <tr>
+                <td><img src="https://picsum.photos/100/150?2"></td>
+                <td>Pride and Prejudice</td>
+                <td>Jane Austen</td>
+                <td>₹350</td>
+            </tr>
+
+            <tr>
+                <td><img src="https://picsum.photos/100/150?3"></td>
+                <td>Harry Potter</td>
+                <td>J.K. Rowling</td>
+                <td>₹499</td>
+            </tr>
+            <tr>
+                <td><img src="https://picsum.photos/100/150?4"></td>
+                <td>The Alchemist</td>
+                <td>Paulo Coelho</td>
+                <td>₹299</td>
+            </tr>
+        </table>
+    </main>
+</div>
+<footer>
+    © 2026 Online Book Store
+</footer>
+</body>
+</html>
+
+
+Register.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+
+<header>
+    <h1>Online Book Store</h1>
+</header>
+
+<div class="container">
+    <aside class="sidebar">
+        <h3>Menu</h3>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registration</a>
+        <a href="catalogue.html">Catalogue</a>
+    </aside>
+
+    <main class="content">
+        <h2>Registration Page</h2>
+        <form>
+            <label>Name:</label><br>
+            <input type="text"><br><br>
+
+            <label>Email:</label><br>
+            <input type="email"><br><br>
+
+            <label>Password:</label><br>
+            <input type="password"><br><br>
+
+            <label>Phone:</label><br>
+            <input type="text"><br><br>
+
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear">
+        </form>
+    </main>
+
+</div>
+
+<footer>
+    © 2026 Online Book Store
+</footer>
+
+</body>
+</html>
+
+
+
+
+CSS Code
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fdfffd; /* faint yellow */
+}
+/* Header */
+header {
+    background-color: #a5fba3;
+    color: rgb(3, 46, 8);
+    text-align: center;
+    padding: 20px;
+}
+
+/* Layout (3 Frame Style) */
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #333;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    color: #9ceb83;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #52b33e;
+    color: black;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Forms */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 60%;
+    padding: 8px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #999;
+}
+
+th {
+    background-color: #6de74e;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
