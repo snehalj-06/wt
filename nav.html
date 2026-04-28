@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Horizontal Navbar with Nested Dropdown</title>
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 0 40px;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 0;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item a:hover {
+    background-color: #d4a017;
+}
+
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 180px;
+}
+
+.dropdown a {
+    padding: 12px 15px;
+    display: block;
+}
+
+/* Show dropdown */
+.menu-item:hover .dropdown {
+    display: block;
+}
+
+/* Submenu */
+.submenu-item {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #444;
+    min-width: 180px;
+}
+
+.submenu a {
+    padding: 12px 15px;
+    display: block;
+}
+
+/* Show submenu */
+.submenu-item:hover .submenu {
+    display: block;
+}
+
+/* PAGE LAYOUT */
+.layout {
+    display: flex;
+    height: 80vh;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.content {
+    width: 75%;
+    padding: 20px;
+    background-color: #fff9e6;
+}
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION BAR -->
+<div class="navbar">
+
+    <div class="logo">MyWebsite</div>
+
+    <div class="menu">
+        <div class="menu-item"><a href="#">Home</a></div>
+
+        <div class="menu-item">
+            <a href="#">Services ▾</a>
+            <div class="dropdown">
+                <a href="#">Web Design</a>
+                <a href="#">App Development</a>
+
+                <div class="submenu-item">
+                    <a href="#">More ▸</a>
+                    <div class="submenu">
+                        <a href="#">SEO</a>
+                        <a href="#">Digital Marketing</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="menu-item"><a href="#">About</a></div>
+        <div class="menu-item"><a href="#">Contact</a></div>
+    </div>
+
+</div>
+
+<!-- PAGE LAYOUT -->
+<div class="layout">
+    <div class="sidebar">
+        <h3>Sidebar</h3>
+        <p>Navigation links or content here.</p>
+    </div>
+
+    <div class="content">
+        <h2>Main Content Area</h2>
+        <p>This is the layout section created using CSS.</p>
+    </div>
+</div>
+
+</body>
+</html>
