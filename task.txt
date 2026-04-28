@@ -1,0 +1,125 @@
+models/task.js
+
+const mongoose = require('mongoose');
+
+const taskSchema = new mongoose.Schema({
+    name: String,
+    status: { type: Boolean, default: false }
+});
+
+module.exports = mongoose.model('Task', taskSchema);
+
+views/index.ejs
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task App</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<form action="/add" method="POST">
+    <input type="text" name="task" placeholder="Enter task" required>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    <% tasks.forEach(task => { %>
+        <li>
+            <%= task.name %> 
+            <% if (task.status) { %> (Done) <% } %>
+
+            <a href="/done/<%= task._id %>">Done</a>
+            <a href="/delete/<%= task._id %>">Delete</a>
+        </li>
+    <% }) %>
+</ul>
+
+</body>
+</html>
+
+public/style.css
+
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+h2 {
+    color: #333;
+}
+
+input {
+    padding: 8px;
+}
+
+button {
+    padding: 8px;
+    background: green;
+    color: white;
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 10px;
+}
+
+server.js
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const Task = require('./models/Task');
+
+const app = express();
+
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/taskDB')
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log(err));
+
+
+app.get('/', async (req, res) => {
+    const tasks = await Task.find();
+    res.render('index', { tasks });
+});
+
+
+app.post('/add', async (req, res) => {
+    const newTask = new Task({
+        name: req.body.task
+    });
+    await newTask.save();
+    res.redirect('/');
+});
+
+
+app.get('/done/:id', async (req, res) => {
+    await Task.findByIdAndUpdate(req.params.id, { status: true });
+    res.redirect('/');
+});
+
+
+app.get('/delete/:id', async (req, res) => {
+    await Task.findByIdAndDelete(req.params.id);
+    res.redirect('/');
+});
+
+
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
+
