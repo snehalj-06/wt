@@ -1,160 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Horizontal Navbar with Nested Dropdown</title>
-    <style>
-        /* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #222;
-    padding: 0 40px;
-}
-
-.logo {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 15px 0;
-}
-
-/* Menu */
-.menu {
-    display: flex;
-}
-
-.menu-item {
-    position: relative;
-}
-
-.menu-item a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-}
-
-.menu-item a:hover {
-    background-color: #d4a017;
-}
-
-/* Dropdown */
-.dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    min-width: 180px;
-}
-
-.dropdown a {
-    padding: 12px 15px;
-    display: block;
-}
-
-/* Show dropdown */
-.menu-item:hover .dropdown {
-    display: block;
-}
-
-/* Submenu */
-.submenu-item {
-    position: relative;
-}
-
-.submenu {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background-color: #444;
-    min-width: 180px;
-}
-
-.submenu a {
-    padding: 12px 15px;
-    display: block;
-}
-
-/* Show submenu */
-.submenu-item:hover .submenu {
-    display: block;
-}
-
-/* PAGE LAYOUT */
-.layout {
-    display: flex;
-    height: 80vh;
-}
-
-.sidebar {
-    width: 25%;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-.content {
-    width: 75%;
-    padding: 20px;
-    background-color: #fff9e6;
-}
-    </style>
+<title>Student Portal</title>
+<style>
+body{font-family:"Cambria";margin:0;background:#f0f2f5;text-align:center}
+header{background:linear-gradient(135deg,#6a5acd,#4b0082);color:#fff;padding:30px}
+nav{background:#fff;display:flex;justify-content:center;position:sticky;top:0;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.menu{position:relative;padding:15px 20px;font-weight:bold;color:#333;text-decoration:none}
+.drop{position:absolute;top:100%;left:0;background:#fff;display:none;min-width:140px;box-shadow:0 4px 8px rgba(0,0,0,.1)}
+.drop a{display:block;padding:10px;color:#333;text-decoration:none;font-size:14px}
+.menu:hover .drop{display:block}
+.drop a:hover{background:#6a5acd;color:#fff}
+.card{display:none;background:#fff;max-width:600px;margin:30px auto;padding:25px;border-radius:12px;text-align:left}
+#home{display:block}
+section:target{display:block}
+section:target ~ #home{display:none}
+</style>
 </head>
 <body>
 
-<!-- NAVIGATION BAR -->
-<div class="navbar">
+<header>
+<h1>STUDENT PORTAL</h1>
+<p>AISSMS IOIT, Pune</p>
+</header>
 
-    <div class="logo">MyWebsite</div>
+<nav>
+<a href="#home" class="menu">Home</a>
 
-    <div class="menu">
-        <div class="menu-item"><a href="#">Home</a></div>
-
-        <div class="menu-item">
-            <a href="#">Services ▾</a>
-            <div class="dropdown">
-                <a href="#">Web Design</a>
-                <a href="#">App Development</a>
-
-                <div class="submenu-item">
-                    <a href="#">More ▸</a>
-                    <div class="submenu">
-                        <a href="#">SEO</a>
-                        <a href="#">Digital Marketing</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="menu-item"><a href="#">About</a></div>
-        <div class="menu-item"><a href="#">Contact</a></div>
-    </div>
-
+<div class="menu">Academics ▾
+<div class="drop">
+<a href="#subjects">Subjects</a>
+<a href="#syllabus">Syllabus</a>
+</div>
 </div>
 
-<!-- PAGE LAYOUT -->
-<div class="layout">
-    <div class="sidebar">
-        <h3>Sidebar</h3>
-        <p>Navigation links or content here.</p>
-    </div>
+<a href="#contact" class="menu">Contact</a>
+</nav>
 
-    <div class="content">
-        <h2>Main Content Area</h2>
-        <p>This is the layout section created using CSS.</p>
-    </div>
-</div>
+<main>
+<section id="home" class="card">
+<h2>Welcome</h2>
+<p>Select a category from menu.</p>
+</section>
+
+<section id="subjects" class="card">
+<h2>Subjects</h2>
+<ul>
+<li>Data Structures</li>
+<li>Operating Systems</li>
+<li>DBMS</li>
+</ul>
+</section>
+
+<section id="syllabus" class="card">
+<h2>Syllabus</h2>
+<p>Theory, Practicals, Mini Projects.</p>
+</section>
+
+<section id="contact" class="card">
+<h2>Contact</h2>
+<p>Email: student.portal@aissmsioit.ac.in</p>
+</section>
+</main>
 
 </body>
 </html>
