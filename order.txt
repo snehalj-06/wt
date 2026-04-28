@@ -1,0 +1,156 @@
+Order.html-
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Food Order</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2>Food Order</h2>
+    <form onsubmit="return placeOrder()">
+        <label>Select Items:</label><br>
+        <input type="checkbox" value="Pizza" data-price="200"> Pizza (₹200)<br>
+        <input type="checkbox" value="Burger" data-price="100"> Burger (₹100)<br>
+        <input type="checkbox" value="Pasta" data-price="150"> Pasta (₹150)<br>
+        <input type="checkbox" value="Cold Drink" data-price="50"> Cold Drink (₹50)<br>
+
+        <br><br>
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+Bill.html-
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bill & Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Bill Summary</h2>
+
+    <ul id="items"></ul>
+    <h3 id="total"></h3>
+
+    <hr>
+
+    <h3>Feedback</h3>
+    <textarea id="feedback" placeholder="Enter your feedback"></textarea>
+
+    <button onclick="submitFeedback()">Submit Feedback</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+Style.css
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffdb58, #fee6aa);
+    margin: 0;
+}
+.container {
+    width: 350px;
+    margin: 60px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+h2 {
+    text-align: center;
+    color: #b8860b;
+}
+label {
+    font-weight: bold;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #d4a017;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b8860b;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+Script.js
+
+// Function for order page
+function placeOrder() {
+    let items = document.querySelectorAll("input[type=checkbox]:checked");
+
+    let orderList = [];
+    let total = 0;
+
+    items.forEach(item => {
+        let name = item.value;
+        let price = parseInt(item.getAttribute("data-price"));
+        orderList.push(name);
+        total += price;
+    });
+
+    if (orderList.length === 0) {
+        alert("Please select at least one item");
+        return false;
+    }
+    // Store data
+    localStorage.setItem("items", orderList.join(", "));
+    localStorage.setItem("total", total);
+
+    // Redirect to bill page
+    window.location.href = "bill.html";
+    return false;
+}
+// Display bill on bill.html
+window.onload = function () {
+    if (document.getElementById("items")) {
+        document.getElementById("items").innerHTML =
+            "Items: " + localStorage.getItem("items");
+        document.getElementById("total").innerHTML =
+            "Total Amount: ₹" + localStorage.getItem("total");
+    }
+};
+// Feedback
+function submitFeedback() {
+    let fb = document.getElementById("feedback").value;
+    if (fb === "") {
+        alert("Please enter feedback");
+    } else {
+        alert("Thank you for your feedback!");
+    }
+}
